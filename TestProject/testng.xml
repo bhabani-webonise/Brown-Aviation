@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="RegressionSuite">
+	<test name="BhabaniRegressionTest">
+		<parameter name="browser" value="firefox" />
+		<parameter name="port" value="http://localhost:4444/wd/hub" />
+		<classes>
+			<class name="test.Aviation" />
+		</classes>
+	</test>
+
+	<test name="BhabaniRegressionTest2">
+
+		<parameter name="browser" value="firefox" />
+		<parameter name="port" value="http://localhost:4444/wd/hub" />
+		<classes>
+			<class name="test.Aviation" />
+		</classes>
+	</test>
+
+</suite>
