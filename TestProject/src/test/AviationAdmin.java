@@ -24,7 +24,7 @@ public class AviationAdmin {
 /*@Test
 
 
-public void addcraft() throws InterruptedException{
+public void addaircraft() throws InterruptedException{
 	
 //Login to Brown Admin Dashboard
 	
@@ -62,8 +62,8 @@ public void addcraft() throws InterruptedException{
 	//Create Aircraft Button
 	
 	driver.findElement(By.xpath("//*[@id='new_aircraft']/div[12]/input")).click();	
-}*/
-/*@Test
+}
+@Test
 
 public void flightLog() throws InterruptedException{
 	
@@ -84,7 +84,7 @@ public void flightLog() throws InterruptedException{
 	 //Date of Flight
 		
 		driver.findElement(By.id("flight_log_date_of_flight")).click(); //click field
-		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table/tbody/tr[5]/td[6]/a")).click(); //click next month
+		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[2]/a")).click(); //click next month
 		
 	 //Takeoff time
 		
@@ -136,8 +136,9 @@ public void flightLog() throws InterruptedException{
 	
 	driver.findElement(By.xpath("//*[@id='new_flight_log']/div[14]/input")).click();
 }
-*/
 
+
+//Tested and Failed Test Case
 @Test
 
 //Fleet Management Test Cases
@@ -155,18 +156,24 @@ public void fleet() throws InterruptedException{
 	driver.findElement(By.xpath("//*[@id='new_user']/div[4]/input")).click();
 	
 	//Add Airframe
-	driver.get("http://testbal.weboapps.com/fleets");
-	driver.findElement(By.linkText("Add Airframe")).click();
-	//driver.findElement(By.id("aircraft_type_name")).sendKeys("Airframe_Test");
+	driver.get("http://testbal.weboapps.com/fleets/new");
+	//driver.findElement(By.linkText("Add Airframe")).click();
+	driver.findElement(By.id("aircraft_type_name")).click();
+	driver.findElement(By.id("aircraft_type_name")).sendKeys("Airframe_Test");
+	driver.findElement(By.id("aircraft_type_make")).click();
 	driver.findElement(By.id("aircraft_type_make")).sendKeys("Make_Test");
+	driver.findElement(By.id("aircraft_type_model_name")).click();
 	driver.findElement(By.id("aircraft_type_model_name")).sendKeys("Model_Test");
 	
 	//Add Attachment to Airframe Document
-	/*driver.findElement(By.linkText("Add Attachment")).click();
-	driver.findElement(By.id("aircraft_type_documents_attributes_1_attachment")).sendKeys("C:\\Users\\Bhavani-pc\\Desktop\\SmarterPlace_version1.0_Testing_SignOff");*/
-	driver.findElement(By.className("btn")).click();
+	driver.findElement(By.linkText("Add Attachment")).click();
+	driver.findElement(By.id("aircraft_type_documents_attributes_1_attachment")).sendKeys("C:\\Users\\Bhavani-pc\\Desktop\\SmarterPlace_version1.0_Testing_SignOff");
+	driver.findElement(By.xpath("//*[@id='new_aircraft_type']/div[7]/input")).click();
 }
 
+	
+	//Tested and Proper 
+	
 @Test
 
 public void addEngineInfo() throws InterruptedException{
@@ -181,23 +188,49 @@ public void addEngineInfo() throws InterruptedException{
 		driver.findElement(By.xpath("//*[@id='new_user']/div[4]/input")).click();
 		
 		//Add Engine Info
-		driver.findElement(By.id("engine_info_overall_time_in_hours")).sendKeys("Engine_Test1");
+		driver.get("http://testbal.weboapps.com/engine_infos/new");
+		driver.findElement(By.id("engine_info_model_name")).click();
+		driver.findElement(By.id("engine_info_model_name")).sendKeys("Engine_Test1");
+		driver.findElement(By.id("engine_info_sub_model")).click();
 		driver.findElement(By.id("engine_info_sub_model")).sendKeys("SubModel_Engine");
+		driver.findElement(By.id("engine_info_manufacturer")).click();
 		driver.findElement(By.id("engine_info_manufacturer")).sendKeys("Manufacturer1");
+		Select aircraft1;
+		aircraft1 = new Select(driver.findElement(By.id("engine_info_inspection_time_in_hours")));
+		aircraft1.selectByVisibleText("100");
+		driver.findElement(By.id("engine_info_replacement_time_in_hours")).click();
 		driver.findElement(By.id("engine_info_replacement_time_in_hours")).sendKeys("150");
+		driver.findElement(By.id("engine_info_overall_time_in_hours")).click();
 		driver.findElement(By.id("engine_info_overall_time_in_hours")).sendKeys("250");
 		
 		//Click on Create Engine Info
-		driver.findElement(By.className("btn")).click();
+		driver.findElement(By.xpath("//*[@id='new_engine_info']/div[10]/input")).click();
 		
 	
-}
+}*/
 
+@Test
 
-	/*@AfterMethod
+public void logout() throws InterruptedException{
+	
+	//Login to Dashboard
+	
+	driver.manage().window().maximize();
+	driver.get("http://brown:brown6186@testbal.weboapps.com/");
+	driver.findElement(By.linkText("Login")).click();
+	Thread.sleep(4000);
+	driver.findElement(By.id("user_email")).sendKeys("admin@brown.com");
+	driver.findElement(By.id("user_password")).sendKeys("admin2014");
+	driver.findElement(By.xpath("//*[@id='new_user']/div[4]/input")).click();
+	
+	driver.findElement(By.linkText("Logout")).click();
+			
+	}
+	
+	@AfterMethod
 	
 	public void  closeBrowser(){
 		
 		driver.quit();
-	}*/
+	}
 }
