@@ -21,7 +21,7 @@ public class AviationAdmin {
 	
 	//Tested and Proper
 
-/*@Test
+@Test
 
 
 public void addaircraft() throws InterruptedException{
@@ -207,7 +207,7 @@ public void addEngineInfo() throws InterruptedException{
 		driver.findElement(By.xpath("//*[@id='new_engine_info']/div[10]/input")).click();
 		
 	
-}*/
+}
 
 @Test
 
